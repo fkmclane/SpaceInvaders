@@ -1,0 +1,34 @@
+Pong:
+	KeyboardControl:
+		
+	AudioControl:
+		
+	Paddle:
+		
+	Shot:
+		
+	Score:
+		
+Pac-Man:
+	KeyboardControl, AudioControl, Pacman, Ghost, Food, SpecialFood, Block
+Space Invaders:
+	KeyboardControl:
+		Buffers keyboard input and is used by Ship.
+	AudioControl:
+		Outputs background sound and is used by Shot to do other sounds.
+	Ship:
+		The player's ship that can make shots in front of itself and moves left to right.  Shots will remove this object.
+	Enemy:
+		Moves left to right in a block and slowly forward.  Shots will remove this object.
+	Boss:
+		The big ship that moves across the top.  Shots will remove this object.
+	Shield:
+		This is a stationary block that protects the ship from enemy shots.  Shots will remove this object.
+	Shot:
+		Can be fired by the player's ship or by enemies.  It will remove the object it hits and remove itself and play the appropriate sound.
+Galaga:
+	KeyboardControl, AudioControl, Ship, Alien, Shot
+Super Mario:
+	KeyboardControl, AudioControl, Mario, Koopa, Goomba, Ground, Coin, QuestionBox, Flag
+Pole Position:
+	KeyboardControl, AudioControl, Wall, Car, Sign
