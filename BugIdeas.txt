@@ -1,14 +1,5 @@
 Pong:
-	KeyboardControl:
-		
-	AudioControl:
-		
-	Paddle:
-		
-	Shot:
-		
-	Score:
-		
+	KeyboardControl, AudioControl, Paddle, Shot, Score
 Pac-Man:
 	KeyboardControl, AudioControl, Pacman, Ghost, Food, SpecialFood, Block
 Space Invaders:
