@@ -19,13 +19,12 @@ public class Shot extends Actor {
             return;
         }
         
-        if(grid.get(move) instanceof Wall)
-        {
+        if(grid.get(move) instanceof Wall) {
             Wall w = (Wall)grid.get(move);
             w.reduceStrength();
+            removeSelfFromGrid();
         }
-        
-        if(grid.get(move) != null) {
+        else if(grid.get(move) != null) {
             grid.get(move).removeSelfFromGrid();
             removeSelfFromGrid();
         }
