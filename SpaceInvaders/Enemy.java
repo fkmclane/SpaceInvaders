@@ -5,12 +5,12 @@ import info.gridworld.grid.Grid;
 import info.gridworld.grid.Location;
 
 public class Enemy extends Actor {
-	private int step;
+	private int step = 0;
 	private int steps;
+	private SHOT_CHANCE = 0.80;
 
 	public Enemy(int direction, int steps) {
 		setDirection(direction);
-		step = 0;
 		this.steps = steps * 2;
 	}
 
@@ -35,5 +35,14 @@ public class Enemy extends Actor {
 			return;
 		}
 		moveTo(move);
+
+		if(Math.random() > SHOT_CHANCE) {
+			fire();
+		}
+	}
+
+	private void fire() {
+		Shot s = new Shot(Location.NORTH);
+		s.putSelfInGrid(getGrid(), getLocation().getAdjacentLocation(Location.SOUTH));
 	}
 }
