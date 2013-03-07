@@ -42,7 +42,7 @@ public class Enemy extends Actor {
 	}
 
 	private void fire() {
-		Shot s = new Shot(Location.NORTH);
+		Shot s = new Shot(Location.SOUTH);
 		s.putSelfInGrid(getGrid(), getLocation().getAdjacentLocation(Location.SOUTH));
 	}
 }
