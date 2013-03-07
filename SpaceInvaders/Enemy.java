@@ -7,7 +7,7 @@ import info.gridworld.grid.Location;
 public class Enemy extends Actor {
 	private int step = 0;
 	private int steps;
-	private SHOT_CHANCE = 0.80;
+	private double SHOT_CHANCE = 0.80;
 
 	public Enemy(int direction, int steps) {
 		setDirection(direction);
