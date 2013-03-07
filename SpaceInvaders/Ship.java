@@ -30,7 +30,7 @@ public class Ship extends Actor {
 		s.putSelfInGrid(getGrid(), getLocation().getAdjacentLocation(Location.NORTH));
 	}
 
-	public void act() {
-
+	public void act() { //TODO: Finish
+		
 	}
 }
