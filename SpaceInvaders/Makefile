@@ -5,10 +5,10 @@ SRC = $(wildcard *.java)
 
 ifdef SystemRoot
 	RM = del /Q
-	JFLAGS += -cp .;..\gridworld.jar
+	JFLAGS += -cp .;..\..\gridworld.jar
 else
 	RM = rm -f
-	JFLAGS += -cp .:../gridworld.jar
+	JFLAGS += -cp .:../../gridworld.jar
 endif
 
 .SUFFIXES: .java .class
