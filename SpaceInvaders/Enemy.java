@@ -20,19 +20,20 @@ public class Enemy extends Actor {
 			return;
 
 		Location move = getLocation().getAdjacentLocation(getDirection());
-		if(!(grid.isValid(move) && grid.get(move) == null)) {
-			return;
-		}
 
 		step++;
 		if(step == steps / 2) {
 			setDirection(getDirection() + Location.HALF_CIRCLE);
-			moveTo(move);
 		}
-		else if(step == steps) {
+		else if(step > steps) {
 			step = 0;
 			setDirection(getDirection() + Location.HALF_CIRCLE);
-			moveTo(new Location(getLocation().getRow() + 1, getLocation().getCol()));
+			move = new Location(getLocation().getRow() + 1, getLocation().getCol());
 		}
+
+		if(!(grid.isValid(move) && grid.get(move) == null)) {
+			return;
+		}
+		moveTo(move);
 	}
 }
