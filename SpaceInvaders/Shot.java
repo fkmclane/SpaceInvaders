@@ -24,6 +24,11 @@ public class Shot extends Actor {
             w.reduceStrength();
             removeSelfFromGrid();
         }
+        else if(grid.get(move) instanceof Ship) {
+            Ship s = (Ship)grid.get(move);
+            s.reduceLives();
+            removeSelfFromGrid();
+        }
         else if(grid.get(move) != null) {
             grid.get(move).removeSelfFromGrid();
             removeSelfFromGrid();
