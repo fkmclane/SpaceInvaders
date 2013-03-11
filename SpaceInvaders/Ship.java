@@ -41,7 +41,7 @@ public class Ship extends Actor {
         s.putSelfInGrid(getGrid(), getLocation().getAdjacentLocation(Location.NORTH));
     }
 
-    public void act() { //TODO: Finish
+    public void act() {
         if(KeyboardControl.getKey(3))
             moveRight();
         else if(KeyboardControl.getKey(1))

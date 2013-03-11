@@ -36,7 +36,7 @@ public class Enemy extends Actor {
 		}
 		moveTo(move);
 
-		if(Math.random() > SHOT_CHANCE) { //TODO: Needs to check if it is on the bottom
+		if(Math.random() > SHOT_CHANCE && !(grid.get(getLocation().getAdjacentLocation(Location.SOUTH).getAdjacentLocation(Location.SOUTH)) instanceof Enemy)) {
 			fire();
 		}
 	}
