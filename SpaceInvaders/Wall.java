@@ -1,13 +1,11 @@
 //package spaceinvaders;
-
-import java.awt.Color;
 import info.gridworld.actor.Rock;
 
 public class Wall extends Rock {
     private int strength;
 
     public Wall(int strength) {
-        super(Color.BLACK);
+        super(null);
         this.strength = strength;
     }
     
@@ -17,7 +15,7 @@ public class Wall extends Rock {
             removeSelfFromGrid();
     }
     
-    public String getImagePrefix() {
+    public String getImageSuffix() {
         return Integer.toString(strength);
     }
 }

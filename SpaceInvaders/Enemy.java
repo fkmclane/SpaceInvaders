@@ -5,6 +5,7 @@ import info.gridworld.grid.Grid;
 import info.gridworld.grid.Location;
 
 public class Enemy extends Actor {
+    private int direction;
     private int step = 0;
     private int steps;
     private int counter = 0;
@@ -13,7 +14,7 @@ public class Enemy extends Actor {
     private double SHOT_CHANCE = 0.90;
 
     public Enemy(int direction, int steps, int speed) {
-        setDirection(direction);
+        this.direction = direction;
         this.steps = steps * 2;
         slowness = 5 - speed;
     }
@@ -33,15 +34,15 @@ public class Enemy extends Actor {
                 fire();
             }
         
-            Location move = getLocation().getAdjacentLocation(getDirection());
+            Location move = getLocation().getAdjacentLocation(direction);
             
             step++;
             if(step == steps / 2) {
-                setDirection(getDirection() + Location.HALF_CIRCLE);
+                direction += Location.HALF_CIRCLE;
             }
             else if(step > steps) {
                 step = 0;
-                setDirection(getDirection() + Location.HALF_CIRCLE);
+                direction += Location.HALF_CIRCLE;
                 move = new Location(getLocation().getRow() + 1, getLocation().getCol());
             }
             
@@ -80,7 +81,7 @@ public class Enemy extends Actor {
         }
     }
     
-    public String getImagePrefix() {
+    public String getImageSuffix() {
         return Integer.toString(animation);
     }
     
