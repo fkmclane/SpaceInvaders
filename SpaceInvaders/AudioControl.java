@@ -11,19 +11,19 @@ public class AudioControl {
 		clip.open(AudioSystem.getAudioInputStream(Main.class.getResourceAsStream(file)));
 	}
 
-	public play() {
-		play(0);
-	}
-
-	public play(int position) {
-		clip.setFramePosition(position);
+	public void play() {
 		clip.start();
 	}
 
-	public loop() {
+	public void play(int position) {
+		clip.setFramePosition(position);
+		play();
 	}
 
-	public pause() {
+	public void loop() {
+	}
+
+	public void pause() {
 		clip.stop();
 	}
 }
