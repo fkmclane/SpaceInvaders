@@ -5,11 +5,8 @@ import info.gridworld.grid.Location;
 
 public class SpaceInvaders {
 	public static void main(String args[]) {
-		ActorWorld world = new ActorWorld();
-		world.add(new Boss(Location.EAST, 10));
-		world.add(new Wall(4));
-		world.add(new Shot(Location.SOUTH));
-		world.add(new Enemy(Location.WEST, 4));
+		InvaderWorld world = new InvaderWorld();
+		world.add(new Ship(5));
 		world.show();
 	}
 }
