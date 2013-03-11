@@ -17,17 +17,8 @@ public class KeyboardControl implements KeyListener {
 		}
 			
 	}
-	
-	public void keyTyped(KeyEvent e) {
-		
-	}
 
-	public void keyPressed(KeyEvent e) {
-		if(!keys.contains((Integer)e.getKeyCode()))
-			keys.add((Integer)e.getKeyCode());
-	}
-
-	public void keyReleased(KeyEvent e) {
-		
+	public static void setKey(int key) {
+		keys.add(key);
 	}
 }
