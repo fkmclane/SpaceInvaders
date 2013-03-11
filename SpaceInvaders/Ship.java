@@ -18,11 +18,22 @@ public class Ship extends Actor {
     }
 
     private void moveLeft() {
-        moveTo(getLocation().getAdjacentLocation(Location.EAST));
+        Location location = getLocation().getAdjacentLocation(Location.WEST);
+        if(canMove(location))
+		moveTo(location);
     }
 
     private void moveRight() {
-        moveTo(getLocation().getAdjacentLocation(Location.WEST));
+        Location location = getLocation().getAdjacentLocation(Location.EAST);
+        if(canMove(location))
+		moveTo(location);
+    }
+
+    private boolean canMove(Location location) {
+        if(grid.isValid(move) && grid.get(move) == null)
+            return true;
+	else
+            return false;
     }
 
     private void fire() {
@@ -31,9 +42,9 @@ public class Ship extends Actor {
     }
 
     public void act() { //TODO: Finish
-        if(KeyboardControl.getKey(1))
+        if(KeyboardControl.getKey(3))
             moveRight();
-        else if(KeyboardControl.getKey(3))
+        else if(KeyboardControl.getKey(1))
             moveLeft();
         else if(KeyboardControl.getKey(4))
             fire();
