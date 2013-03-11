@@ -64,7 +64,7 @@ public class Ship extends Actor {
 		}
 
 		try {
-			AudioControl shot = new AudioControl("shot.wav");
+			AudioControl shot = new AudioControl(SpaceInvaders.class.getResourceAsStream("shot.wav"));
 			shot.play();
 		}
 		catch(Exception e) {

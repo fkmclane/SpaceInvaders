@@ -78,7 +78,7 @@ public class Enemy extends Actor {
 		}
 
 		try {
-			AudioControl shot = new AudioControl("shot.wav");
+			AudioControl shot = new AudioControl(SpaceInvaders.class.getResourceAsStream("shot.wav"));
 			shot.play();
 		}
 		catch(Exception e) {
@@ -92,7 +92,7 @@ public class Enemy extends Actor {
 
 	public void removeSelfFromGrid() {
 		try {
-			AudioControl death = new AudioControl("enemydeath.wav");
+			AudioControl death = new AudioControl(SpaceInvaders.class.getResourceAsStream("enemydeath.wav"));
 			death.play();
 		}
 		catch(Exception e) {

@@ -2,24 +2,29 @@
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
 public class AudioControl {
-	private Clip clip;
+	private Clip clip = AudioSystem.getClip();
 
 	public AudioControl(String file) throws LineUnavailableException,
-	       UnsupportedAudioFileException, IOException {
-		       this(new File(file));
-       }
+		UnsupportedAudioFileException, IOException {
+		this(new File(file));
+	}
+
+	public AudioControl(InputStream file) throws LineUnavailableException,
+		UnsupportedAudioFileException, IOException {
+		clip.open(AudioSystem.getAudioInputStream(file));
+	}
 
 	public AudioControl(File file) throws LineUnavailableException,
-	       UnsupportedAudioFileException, IOException {
-		       clip = AudioSystem.getClip();
-		       clip.open(AudioSystem.getAudioInputStream(file));
-       }
+		UnsupportedAudioFileException, IOException {
+		clip.open(AudioSystem.getAudioInputStream(file));
+	}
 
 	public void play() {
 		clip.start();

@@ -1,3 +1,18 @@
+/**
+ * An implementation of SpaceInvaders in GridWorld.
+ *
+ * On my honor I have neither given nor received help on this assignment.
+ *
+ *
+ *
+ *
+ *
+ *
+ * @author Foster McLane
+ * @author Max Kirkpatrick
+ * @version 0.1
+ */
+
 //package spaceinvaders;
 
 import info.gridworld.actor.Actor;
@@ -28,7 +43,7 @@ public class SpaceInvaders {
 		world.add(new Location(18, 18), new Wall(4));
 
 		try {
-			AudioControl background = new AudioControl("background.wav");
+			AudioControl background = new AudioControl(SpaceInvaders.class.getResourceAsStream("background.wav"));
 			background.loop();
 		}
 		catch(Exception e) {
