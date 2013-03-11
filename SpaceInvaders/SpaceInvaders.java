@@ -1,11 +1,14 @@
 //package spaceinvaders;
 
+import info.gridworld.actor.Actor;
 import info.gridworld.actor.ActorWorld;
-import info.gridworld.grid.*;
+import info.gridworld.grid.Grid;
+import info.gridworld.grid.BoundedGrid;
+import info.gridworld.grid.Location;
 
 public class SpaceInvaders {
 	public static void main(String args[]) {
-	    Grid g = new BoundedGrid(20, 20);
+	    Grid<Actor> g = new BoundedGrid<Actor>(20, 20);
 		InvaderWorld world = new InvaderWorld(g);
 		
 		for(int i = 2; i <= 8; i+=2)
