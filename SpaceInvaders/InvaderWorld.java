@@ -12,7 +12,7 @@ public class InvaderWorld extends ActorWorld
     
     public boolean keyPressed(String description, Location loc)
     {
-        System.out.println("keyprssed was called.");
+        System.out.println("keypressed was called.");
         System.out.println("key " + description + ".");
         if(!description.equals("W") && !description.equals("A") && !description.equals("S") && !description.equals("D") && !description.equals("SPACE"))
         {
