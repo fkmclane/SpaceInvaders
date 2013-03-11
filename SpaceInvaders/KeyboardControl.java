@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class KeyboardControl implements KeyListener {
-	private static ArrayList<Integer> keys = new ArrayList();
+public class KeyboardControl<E> implements KeyListener {
+	private static ArrayList<E> keys = new ArrayList();
 
-	public static boolean getKey(int key) {
+	public static boolean getKey(E key) {
 		if(keys.contains((Integer)key)) {
 			keys.remove((Integer)key);
 			return true;
@@ -18,7 +18,7 @@ public class KeyboardControl implements KeyListener {
 			
 	}
 
-	public static void setKey(int key) {
+	public static void setKey(E key) {
 		keys.add(key);
 	}
 }
