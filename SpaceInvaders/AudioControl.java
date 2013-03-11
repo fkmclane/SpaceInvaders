@@ -3,6 +3,7 @@
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.BufferedInputStream;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.LineUnavailableException;
@@ -16,9 +17,9 @@ public class AudioControl {
 		this(new File(file));
 	}
 
-	public AudioControl(InputStream file) throws LineUnavailableException,
+	public AudioControl(InputStream stream) throws LineUnavailableException,
 		UnsupportedAudioFileException, IOException {
-		clip.open(AudioSystem.getAudioInputStream(file));
+		clip.open(AudioSystem.getAudioInputStream(new BufferedInputStream(stream)));
 	}
 
 	public AudioControl(File file) throws LineUnavailableException,
