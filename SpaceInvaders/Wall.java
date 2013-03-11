@@ -15,6 +15,7 @@ public class Wall extends Rock {
 		if (strength <= 0)
 			removeSelfFromGrid();
 	}
+
 	public String getImageSuffix() {
 		return Integer.toString(strength);
 	}
