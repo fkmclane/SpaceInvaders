@@ -1,8 +1,14 @@
 import info.gridworld.actor.ActorWorld;
 import info.gridworld.grid.Location;
+import info.gridworld.grid.Grid;
 
 public class InvaderWorld extends ActorWorld
 {
+    public InvaderWorld(Grid g)
+    {
+        super(g);
+    }
+    
     public boolean keyPressed(String description, Location loc)
     {
         System.out.println("keyprssed was called.");
