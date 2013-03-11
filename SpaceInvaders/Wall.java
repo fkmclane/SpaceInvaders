@@ -1,6 +1,5 @@
 //package spaceinvaders;
 
-import info.gridworld.actor.Rock;
 import java.awt.Color;
 import info.gridworld.actor.Rock;
 
