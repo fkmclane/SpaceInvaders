@@ -1,6 +1,7 @@
 //package spaceinvaders;
 
 import java.awt.Color;
+import info.gridworld.actor.Rock;
 
 public class Wall extends Rock {
     private int strength;
