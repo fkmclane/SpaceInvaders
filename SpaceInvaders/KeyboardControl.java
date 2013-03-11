@@ -19,6 +19,7 @@ public class KeyboardControl {
 	}
 
 	public static void addKey(int key) {
-		keys.add((Integer)key);
+		if(!keys.contains((Integer)key))
+			keys.add((Integer)key);
 	}
 }

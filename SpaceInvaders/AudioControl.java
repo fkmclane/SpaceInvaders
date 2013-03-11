@@ -1,14 +1,14 @@
 //package spaceinvaders
 
-public class AudioControl implements Runnable {
-	private file;
+import javax.sound.sampled.Clip;
+import javax.
+
+public class AudioControl {
+	private Clip clip;
 
 	public AudioControl(File file) {
-		this.file = file;
-	}
-
-	public void run() {
-		
+		clip = AudioSystem.getClip();
+		clip.open(AudioSystem.getAudioInputStream(Main.class.getResourceAsStream(file)));
 	}
 
 	public play() {
@@ -16,14 +16,14 @@ public class AudioControl implements Runnable {
 	}
 
 	public play(int position) {
-		
+		clip.setFramePosition(position);
+		clip.start();
 	}
 
 	public loop() {
-		
 	}
 
 	public pause() {
-		
+		clip.stop();
 	}
 }
