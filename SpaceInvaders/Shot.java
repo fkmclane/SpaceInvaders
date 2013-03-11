@@ -16,6 +16,7 @@ public class Shot extends Actor {
 
         Location move = getLocation().getAdjacentLocation(getDirection());
         if(!grid.isValid(move)) {
+            removeSelfFromGrid();
             return;
         }
         

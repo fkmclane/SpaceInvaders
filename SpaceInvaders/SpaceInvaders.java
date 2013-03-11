@@ -7,6 +7,7 @@ public class SpaceInvaders {
 	public static void main(String args[]) {
 		InvaderWorld world = new InvaderWorld();
 		world.add(new Ship(5));
+		world.add(new Wall(4));
 		world.show();
 	}
 }

@@ -8,7 +8,10 @@ public class InvaderWorld extends ActorWorld
         System.out.println("keyprssed was called.");
         System.out.println("key " + description + ".");
         if(!description.equals("W") && !description.equals("A") && !description.equals("S") && !description.equals("D") && !description.equals("SPACE"))
+        {
             return false;
+        }
+        
         else
         {
             if(description.equals("W")) KeyboardControl.addKey(0);

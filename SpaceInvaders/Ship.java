@@ -30,7 +30,7 @@ public class Ship extends Actor {
     }
 
     private boolean canMove(Location location) {
-        if(grid.isValid(move) && grid.get(move) == null)
+        if(getGrid().isValid(location) && getGrid().get(location) == null)
             return true;
 	else
             return false;
