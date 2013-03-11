@@ -6,14 +6,18 @@ import info.gridworld.actor.Rock;
 public class Wall extends Rock {
     private int strength;
 
-    public Wall(int s) {
+    public Wall(int strength) {
         super(Color.BLACK);
-        strength = s;
+        this.strength = strength;
     }
     
     public void reduceStrength() {
         strength--;
         if(strength <= 0)
-        removeSelfFromGrid();
+            removeSelfFromGrid();
+    }
+    
+    public String getImagePrefix() {
+        return Integer.toString(strength);
     }
 }

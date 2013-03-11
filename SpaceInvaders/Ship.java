@@ -10,11 +10,28 @@ public class Ship extends Actor {
     public Ship(int lives) {
         this.lives = lives;
     }
+    
+    public void act() {
+        if(KeyboardControl.getKey(3))
+            moveRight();
+        if(KeyboardControl.getKey(1))
+            moveLeft();
+        if(KeyboardControl.getKey(4))
+            fire();
+    }
 
     public void reduceLives() {
         lives--;
         if(lives <= 0)
             removeSelfFromGrid();
+        
+        try {
+            AudioControl death = new AudioControl("shipdeath.wav");
+            death.play();
+        }
+        catch(Exception e) {
+            System.err.println("Error playing ship death sound: " + e);
+        }
     }
 
     private void moveLeft() {
@@ -42,14 +59,13 @@ public class Ship extends Actor {
             Shot shot = new Shot(Location.NORTH);
             shot.putSelfInGrid(getGrid(), location);
         }
-    }
-
-    public void act() {
-        if(KeyboardControl.getKey(3))
-            moveRight();
-        if(KeyboardControl.getKey(1))
-            moveLeft();
-        if(KeyboardControl.getKey(4))
-            fire();
+        
+        try {
+            AudioControl shot = new AudioControl("shot.wav");
+            shot.play();
+        }
+        catch(Exception e) {
+            System.err.println("Error playing shot sound: " + e);
+        }
     }
 }

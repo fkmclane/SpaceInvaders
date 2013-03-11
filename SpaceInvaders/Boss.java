@@ -31,4 +31,15 @@ public class Boss extends Actor {
 			step = 0;
 		}
 	}
+	
+	public void removeSelfFromGrid() {
+        try {
+            AudioControl death = new AudioControl("bossdeath.wav");
+            death.play();
+        }
+        catch(Exception e) {
+            System.err.println("Error playing boss death sound: " + e);
+        }
+        super.removeSelfFromGrid();
+    }
 }

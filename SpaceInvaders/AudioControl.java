@@ -8,27 +8,31 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
 public class AudioControl {
-	private Clip clip;
+    private Clip clip;
 
-	public AudioControl(File file) throws LineUnavailableException, UnsupportedAudioFileException, IOException {
-		clip = AudioSystem.getClip();
-		clip.open(AudioSystem.getAudioInputStream(file));
-	}
+    public AudioControl(String file) throws LineUnavailableException, UnsupportedAudioFileException, IOException {
+        this(new File(file));
+    }
+    
+    public AudioControl(File file) throws LineUnavailableException, UnsupportedAudioFileException, IOException {
+        clip = AudioSystem.getClip();
+        clip.open(AudioSystem.getAudioInputStream(file));
+    }
 
-	public void play() {
-		clip.start();
-	}
+    public void play() {
+        clip.start();
+    }
 
-	public void play(int position) {
-		clip.setFramePosition(position);
-		play();
-	}
+    public void play(int position) {
+        clip.setFramePosition(position);
+        play();
+    }
 
-	public void loop() {
-		clip.loop(Clip.LOOP_CONTINUOUSLY);
-	}
+    public void loop() {
+        clip.loop(Clip.LOOP_CONTINUOUSLY);
+    }
 
-	public void pause() {
-		clip.stop();
-	}
+    public void pause() {
+        clip.stop();
+    }
 }

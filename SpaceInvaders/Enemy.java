@@ -9,6 +9,7 @@ public class Enemy extends Actor {
     private int steps;
     private int counter = 0;
     private int slowness;
+    private int animation = 0;
     private double SHOT_CHANCE = 0.90;
 
     public Enemy(int direction, int steps, int speed) {
@@ -21,6 +22,8 @@ public class Enemy extends Actor {
         Grid<Actor> grid = getGrid();
         if(grid == null)
             return;
+        
+        animation = (animation + 1) % 2;
         
         if(counter == slowness) {
             Location checkLocation = getLocation().getAdjacentLocation(Location.SOUTH).getAdjacentLocation(Location.SOUTH);
@@ -67,5 +70,28 @@ public class Enemy extends Actor {
             Shot shot = new Shot(Location.SOUTH);
             shot.putSelfInGrid(getGrid(), location);
         }
+        
+        try {
+            AudioControl shot = new AudioControl("shot.wav");
+            shot.play();
+        }
+        catch(Exception e) {
+            System.err.println("Error playing shot sound: " + e);
+        }
+    }
+    
+    public String getImagePrefix() {
+        return Integer.toString(animation);
+    }
+    
+    public void removeSelfFromGrid() {
+        try {
+            AudioControl death = new AudioControl("enemydeath.wav");
+            death.play();
+        }
+        catch(Exception e) {
+            System.err.println("Error playing enemy death sound: " + e);
+        }
+        super.removeSelfFromGrid();
     }
 }
