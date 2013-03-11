@@ -1,6 +1,6 @@
 //package spaceinvaders
 
-import java.util.File;
+import java.io.File;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.AudioSystem;
 
@@ -9,7 +9,7 @@ public class AudioControl {
 
 	public AudioControl(File file) {
 		clip = AudioSystem.getClip();
-		clip.open(AudioSystem.getAudioInputStream(Main.class.getResourceAsStream(file)));
+		clip.open(AudioSystem.getAudioInputStream(file));
 	}
 
 	public void play() {
@@ -22,7 +22,7 @@ public class AudioControl {
 	}
 
 	public void loop() {
-		
+		clip.loop(Clip.LOOP_CONTINUOUSLY);
 	}
 
 	public void pause() {
