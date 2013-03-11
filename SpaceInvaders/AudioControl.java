@@ -1,7 +1,7 @@
 //package spaceinvaders
 
 import javax.sound.sampled.Clip;
-import javax.
+import javax.sound.sampled.AudioSystem;
 
 public class AudioControl {
 	private Clip clip;
