@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class KeyboardControl implements KeyListener {
+public class KeyboardControl {
 	private static ArrayList<Integer> keys = new ArrayList();
 
 	public static boolean getKey(int key) {
@@ -19,6 +19,6 @@ public class KeyboardControl implements KeyListener {
 	}
 
 	public static void addKey(int key) {
-		keys.add(key);
+		keys.add((Integer)key);
 	}
 }
