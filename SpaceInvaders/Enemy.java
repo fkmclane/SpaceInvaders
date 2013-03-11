@@ -28,11 +28,8 @@ public class Enemy extends Actor {
         
         if(counter == slowness) {
             Location checkLocation = getLocation().getAdjacentLocation(Location.SOUTH).getAdjacentLocation(Location.SOUTH);
-            System.out.println(checkLocation);
-            if(Math.random() > SHOT_CHANCE && grid.isValid(checkLocation) && !(grid.get(checkLocation) instanceof Enemy)) {
-                System.out.println("canFire");
+            if(Math.random() > SHOT_CHANCE && grid.isValid(checkLocation) && !(grid.get(checkLocation) instanceof Enemy))
                 fire();
-            }
         
             Location move = getLocation().getAdjacentLocation(direction);
             

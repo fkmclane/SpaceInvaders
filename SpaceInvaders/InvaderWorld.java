@@ -1,3 +1,5 @@
+//package spaceinvaders;
+
 import info.gridworld.actor.Actor;
 import info.gridworld.actor.ActorWorld;
 import info.gridworld.grid.Location;
@@ -12,13 +14,10 @@ public class InvaderWorld extends ActorWorld
     
     public boolean keyPressed(String description, Location loc)
     {
-        System.out.println("keypressed was called.");
-        System.out.println("key " + description + ".");
         if(!description.equals("W") && !description.equals("A") && !description.equals("S") && !description.equals("D") && !description.equals("SPACE"))
         {
             return false;
         }
-        
         else
         {
             if(description.equals("W")) KeyboardControl.addKey(0);
