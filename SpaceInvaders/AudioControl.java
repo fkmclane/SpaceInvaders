@@ -1,5 +1,6 @@
 //package spaceinvaders
 
+import java.util.File;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.AudioSystem;
 
