@@ -1,10 +1,11 @@
+import info.gridworld.actor.Actor;
 import info.gridworld.actor.ActorWorld;
 import info.gridworld.grid.Location;
 import info.gridworld.grid.Grid;
 
 public class InvaderWorld extends ActorWorld
 {
-    public InvaderWorld(Grid g)
+    public InvaderWorld(Grid<Actor> g)
     {
         super(g);
     }
