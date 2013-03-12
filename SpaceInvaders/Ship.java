@@ -13,9 +13,9 @@ public class Ship extends Actor {
 
 	public void act() {
 		if (KeyboardControl.getKey(3))
-			moveRight();
+			move(Location.EAST);
 		if (KeyboardControl.getKey(1))
-			moveLeft();
+			move(Location.WEST);
 		if (KeyboardControl.getKey(4))
 			fire();
 	}
