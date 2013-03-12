@@ -34,25 +34,24 @@ public class Ship extends Actor {
 		}
 	}
 
-	private void moveLeft() {
-		Location location =
-			getLocation().getAdjacentLocation(Location.WEST);
-		if (canMove(location))
-			moveTo(location);
-	}
+	private void move(int direction) {
+		Grid<Actor> grid = getGrid();
+		if(grid == null)
+			return;
 
-	private void moveRight() {
 		Location location =
-			getLocation().getAdjacentLocation(Location.EAST);
-		if (canMove(location))
-			moveTo(location);
-	}
+			getLocation().getAdjacentLocation(direction);
 
-	private boolean canMove(Location location) {
-		if (getGrid().isValid(location) && getGrid().get(location) == null)
-			return true;
-		else
-			return false;
+		if(!grid.isValid(location))
+			return;
+
+		if(grid.get(location) instanceof Shot) {
+			removeSelfFromGrid();
+			grid.get(location).removeSelfFromGrid();
+			return;
+		}
+
+		moveTo(location);
 	}
 
 	private void fire() {

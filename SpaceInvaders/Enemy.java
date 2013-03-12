@@ -20,7 +20,7 @@ public class Enemy extends Actor {
 	}
 
 	public void act() {
-		Grid < Actor > grid = getGrid();
+		Grid<Actor> grid = getGrid();
 		if (grid == null)
 			return;
 
