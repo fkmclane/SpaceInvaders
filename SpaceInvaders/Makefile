@@ -1,14 +1,15 @@
 JC = javac
+JAR = jar
 JFLAGS = 
 
 SRC = $(wildcard *.java)
 
 ifdef SystemRoot
 	RM = del /Q
-	JFLAGS += -cp .;..\..\gridworld.jar
+	JFLAGS += -cp .;..
 else
 	RM = rm -f
-	JFLAGS += -cp .:../../gridworld.jar
+	JFLAGS += -cp .:..
 endif
 
 .SUFFIXES: .java .class
@@ -18,7 +19,11 @@ endif
 
 all: $(SRC:.java=.class)
 
+dist: all
+	$(JAR) cvmf MANIFEST.MF ../SpaceInvaders.jar *.class *.gif *.wav ../info/
+	$(RM) *.class
+
 clean:
 	$(RM) *.class
 
-.PHONY: all clean
+.PHONY: all dist clean
