@@ -26,7 +26,7 @@ public class Ship extends Actor {
 			removeSelfFromGrid();
 
 		try {
-			AudioControl death = new AudioControl("shipdeath.wav");
+			AudioControl death = new AudioControl(SpaceInvaders.class.getResourceAsStream("shipdeath.wav"));
 			death.play();
 		}
 		catch(Exception e) {
