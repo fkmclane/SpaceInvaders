@@ -46,7 +46,7 @@ public class Ship extends Actor {
 			return;
 
 		if(grid.get(location) instanceof Shot) {
-			removeSelfFromGrid();
+			reduceLives();
 			grid.get(location).removeSelfFromGrid();
 			return;
 		}
