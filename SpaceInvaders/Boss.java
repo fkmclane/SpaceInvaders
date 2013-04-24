@@ -15,7 +15,7 @@ public class Boss extends Actor {
 	}
 
 	public void act() {
-		Grid < Actor > grid = getGrid();
+		Grid<Actor> grid = getGrid();
 		if (grid == null)
 			return;
 		Location move = getLocation().getAdjacentLocation(direction);

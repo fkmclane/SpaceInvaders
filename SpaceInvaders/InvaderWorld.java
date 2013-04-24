@@ -6,7 +6,7 @@ import info.gridworld.grid.Location;
 import info.gridworld.grid.Grid;
 
 public class InvaderWorld extends ActorWorld {
-	public InvaderWorld(Grid < Actor > g) {
+	public InvaderWorld(Grid<Actor> g) {
 		super(g);
 	}
 
