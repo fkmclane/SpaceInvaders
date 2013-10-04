@@ -14,8 +14,10 @@ public class InvaderWorld extends ActorWorld {
 		if (!description.equals("W") && !description.equals("A")
 				&& !description.equals("S") && !description.equals("D")
 				&& !description.equals("SPACE")) {
+
 			return false;
-		} else {
+		}
+		else {
 			if (description.equals("W"))
 				KeyboardControl.addKey(0);
 			if (description.equals("A"))

@@ -7,6 +7,14 @@ import info.gridworld.grid.Location;
 public class Shot extends Actor {
 	public Shot(int direction) {
 		setDirection(direction);
+
+		try {
+			AudioControl shot = new AudioControl(SpaceInvaders.class.getResourceAsStream("sounds/shot.wav"));
+			shot.play();
+		}
+		catch(Exception e) {
+			System.err.println("Error playing shot sound: " + e);
+		}
 	}
 
 	public void act() {

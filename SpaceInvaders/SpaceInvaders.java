@@ -43,7 +43,7 @@ public class SpaceInvaders {
 		world.add(new Location(18, 18), new Wall(4));
 
 		try {
-			AudioControl background = new AudioControl(SpaceInvaders.class.getResourceAsStream("background.wav"));
+			AudioControl background = new AudioControl(SpaceInvaders.class.getResourceAsStream("sounds/background.wav"));
 			background.loop();
 		}
 		catch(Exception e) {

@@ -20,7 +20,7 @@ endif
 all: $(SRC:.java=.class)
 
 dist: all
-	$(JAR) cvfe ../SpaceInvaders.jar SpaceInvaders *.class *.gif *.wav info
+	$(JAR) cvfe ../SpaceInvaders.jar SpaceInvaders *.class *.gif sounds info
 	$(RM) *.class
 
 clean:

@@ -76,14 +76,6 @@ public class Enemy extends Actor {
 			Shot shot = new Shot(Location.SOUTH);
 			shot.putSelfInGrid(getGrid(), location);
 		}
-
-		try {
-			AudioControl shot = new AudioControl(SpaceInvaders.class.getResourceAsStream("shot.wav"));
-			shot.play();
-		}
-		catch(Exception e) {
-			System.err.println("Error playing shot sound: " + e);
-		}
 	}
 
 	public String getImageSuffix() {
@@ -92,7 +84,7 @@ public class Enemy extends Actor {
 
 	public void removeSelfFromGrid() {
 		try {
-			AudioControl death = new AudioControl(SpaceInvaders.class.getResourceAsStream("enemydeath.wav"));
+			AudioControl death = new AudioControl(SpaceInvaders.class.getResourceAsStream("sounds/enemydeath.wav"));
 			death.play();
 		}
 		catch(Exception e) {

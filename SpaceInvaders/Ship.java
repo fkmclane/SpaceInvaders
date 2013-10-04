@@ -26,7 +26,7 @@ public class Ship extends Actor {
 			removeSelfFromGrid();
 
 		try {
-			AudioControl death = new AudioControl(SpaceInvaders.class.getResourceAsStream("shipdeath.wav"));
+			AudioControl death = new AudioControl(SpaceInvaders.class.getResourceAsStream("sounds/shipdeath.wav"));
 			death.play();
 		}
 		catch(Exception e) {
@@ -48,6 +48,7 @@ public class Ship extends Actor {
 		if(grid.get(location) instanceof Shot) {
 			reduceLives();
 			grid.get(location).removeSelfFromGrid();
+
 			return;
 		}
 
@@ -60,14 +61,6 @@ public class Ship extends Actor {
 		if (getGrid().isValid(location) && getGrid().get(location) == null) {
 			Shot shot = new Shot(Location.NORTH);
 			shot.putSelfInGrid(getGrid(), location);
-		}
-
-		try {
-			AudioControl shot = new AudioControl(SpaceInvaders.class.getResourceAsStream("shot.wav"));
-			shot.play();
-		}
-		catch(Exception e) {
-			System.err.println("Error playing shot sound: " + e);
 		}
 	}
 }

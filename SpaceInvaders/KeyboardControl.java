@@ -9,17 +9,19 @@ public class KeyboardControl {
 		new ArrayList<Integer>();
 
 	public static boolean getKey(int key) {
-		if (keys.contains((Integer) key)) {
-			keys.remove((Integer) key);
+		if (keys.contains((Integer)key)) {
+			keys.remove((Integer)key);
+
 			return true;
-		} else {
+		}
+		else {
 			return false;
 		}
 
 	}
 
 	public static void addKey(int key) {
-		if (!keys.contains((Integer) key))
-			keys.add((Integer) key);
+		if (!keys.contains((Integer)key))
+			keys.add((Integer)key);
 	}
 }
