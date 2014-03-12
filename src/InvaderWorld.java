@@ -11,25 +11,19 @@ public class InvaderWorld extends ActorWorld {
 	}
 
 	public boolean keyPressed(String description, Location loc) {
-		if (!description.equals("W") && !description.equals("A")
-				&& !description.equals("S") && !description.equals("D")
-				&& !description.equals("SPACE")) {
-
+		if (description.equals("W"))
+			KeyboardControl.addKey(0);
+		else if (description.equals("A"))
+			KeyboardControl.addKey(1);
+		else if (description.equals("S"))
+			KeyboardControl.addKey(2);
+		else if (description.equals("D"))
+			KeyboardControl.addKey(3);
+		else if (description.equals("SPACE"))
+			KeyboardControl.addKey(4);
+		else
 			return false;
-		}
-		else {
-			if (description.equals("W"))
-				KeyboardControl.addKey(0);
-			if (description.equals("A"))
-				KeyboardControl.addKey(1);
-			if (description.equals("S"))
-				KeyboardControl.addKey(2);
-			if (description.equals("D"))
-				KeyboardControl.addKey(3);
-			if (description.equals("SPACE"))
-				KeyboardControl.addKey(4);
 
-			return true;
-		}
+		return true;
 	}
 }
