@@ -5,8 +5,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class KeyboardControl {
-	private static ArrayList<Integer> keys =
-		new ArrayList<Integer>();
+	private static ArrayList<Integer> keys = new ArrayList<Integer>();
 
 	public static boolean getKey(int key) {
 		if (keys.contains((Integer)key)) {
