@@ -25,16 +25,12 @@ public class Enemy extends Actor {
 		animation = (animation + 1) % 2;
 
 		if (counter == slowness) {
-			Location checkLocation =
-				getLocation().getAdjacentLocation(Location.SOUTH).
-				getAdjacentLocation(Location.SOUTH);
+			Location checkLocation = getLocation().getAdjacentLocation(Location.SOUTH).getAdjacentLocation(Location.SOUTH);
 
-			if (Math.random() > SHOT_CHANCE && grid.isValid(checkLocation)
-					&& !(grid.get(checkLocation) instanceof Enemy))
+			if (Math.random() > SHOT_CHANCE && grid.isValid(checkLocation) && !(grid.get(checkLocation) instanceof Enemy))
 				fire();
 
-			Location move =
-				getLocation().getAdjacentLocation(direction);
+			Location move = getLocation().getAdjacentLocation(direction);
 
 			step++;
 			if (step == steps / 2) {
@@ -43,9 +39,7 @@ public class Enemy extends Actor {
 			else if (step > steps) {
 				step = 0;
 				direction += Location.HALF_CIRCLE;
-				move =
-					new Location(getLocation().getRow() + 1,
-							getLocation().getCol());
+				move = new Location(getLocation().getRow() + 1, getLocation().getCol());
 			}
 
 			if (!grid.isValid(move)) {
@@ -67,10 +61,8 @@ public class Enemy extends Actor {
 	}
 
 	private void fire() {
-		Location location =
-			getLocation().getAdjacentLocation(Location.SOUTH);
-		if (getGrid().isValid(location)
-				&& getGrid().get(location) == null) {
+		Location location = getLocation().getAdjacentLocation(Location.SOUTH);
+		if (getGrid().isValid(location) && getGrid().get(location) == null) {
 			Shot shot = new Shot(Location.SOUTH);
 			shot.putSelfInGrid(getGrid(), location);
 		}
