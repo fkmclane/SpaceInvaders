@@ -74,7 +74,7 @@ public class Enemy extends Actor {
 
 	public void removeSelfFromGrid() {
 		try {
-			AudioControl death = new AudioControl(SpaceInvaders.class.getResourceAsStream("sounds/enemydeath.wav"));
+			AudioControl death = new AudioControl(SpaceInvaders.class.getResourceAsStream("sounds/enemydeath.au"));
 			death.play();
 		}
 		catch(Exception e) {

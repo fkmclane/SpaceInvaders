@@ -29,7 +29,7 @@ public class Boss extends Actor {
 	}
 	public void removeSelfFromGrid() {
 		try {
-			AudioControl death = new AudioControl(SpaceInvaders.class.getResourceAsStream("sounds/bossdeath.wav"));
+			AudioControl death = new AudioControl(SpaceInvaders.class.getResourceAsStream("sounds/bossdeath.au"));
 			death.play();
 		}
 		catch(Exception e) {
