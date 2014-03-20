@@ -20,25 +20,25 @@ public class Shot extends Actor {
 		if (grid == null)
 			return;
 
-		Location move =
-			getLocation().getAdjacentLocation(getDirection());
+		Location move = getLocation().getAdjacentLocation(getDirection());
 		if (!grid.isValid(move)) {
 			removeSelfFromGrid();
 			return;
 		}
 
-		if (grid.get(move) instanceof Wall) {
-			Wall w = (Wall) grid.get(move);
+		Actor actor = grid.get(move);
+		if (actor instanceof Wall) {
+			Wall w = (Wall) actor;
 			w.reduceStrength();
 			removeSelfFromGrid();
 		}
-		else if (grid.get(move) instanceof Ship) {
-			Ship s = (Ship) grid.get(move);
+		else if (actor instanceof Ship) {
+			Ship s = (Ship) actor;
 			s.reduceLives();
 			removeSelfFromGrid();
 		}
-		else if (grid.get(move) != null) {
-			grid.get(move).removeSelfFromGrid();
+		else if (actor != null) {
+			actor.removeSelfFromGrid();
 			removeSelfFromGrid();
 		}
 		else {

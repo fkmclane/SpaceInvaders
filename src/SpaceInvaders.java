@@ -1,13 +1,6 @@
 /**
  * An implementation of SpaceInvaders in GridWorld.
  *
- * On my honor I have neither given nor received help on this assignment.
- *
- *
- *
- *
- *
- *
  * @author Foster McLane
  * @author Max Kirkpatrick
  * @version 0.1

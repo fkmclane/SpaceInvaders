@@ -10,13 +10,11 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 public class AudioControl {
 	private Clip clip = AudioSystem.getClip();
 
-	public AudioControl(String file) throws LineUnavailableException,
-		UnsupportedAudioFileException, IOException {
+	public AudioControl(String file) throws LineUnavailableException, UnsupportedAudioFileException, IOException {
 		this(new File(file));
 	}
 
-	public AudioControl(InputStream stream) throws LineUnavailableException,
-		UnsupportedAudioFileException, IOException {
+	public AudioControl(InputStream stream) throws LineUnavailableException, UnsupportedAudioFileException, IOException {
 		clip.open(AudioSystem.getAudioInputStream(new BufferedInputStream(stream)));
 	}
 

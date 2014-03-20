@@ -37,8 +37,7 @@ public class Ship extends Actor {
 		if(grid == null)
 			return;
 
-		Location location =
-			getLocation().getAdjacentLocation(direction);
+		Location location = getLocation().getAdjacentLocation(direction);
 
 		if(!grid.isValid(location))
 			return;
@@ -54,8 +53,7 @@ public class Ship extends Actor {
 	}
 
 	private void fire() {
-		Location location =
-			getLocation().getAdjacentLocation(Location.NORTH);
+		Location location = getLocation().getAdjacentLocation(Location.NORTH);
 		if (getGrid().isValid(location) && getGrid().get(location) == null) {
 			Shot shot = new Shot(Location.NORTH);
 			shot.putSelfInGrid(getGrid(), location);
