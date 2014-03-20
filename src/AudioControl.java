@@ -18,8 +18,7 @@ public class AudioControl {
 		clip.open(AudioSystem.getAudioInputStream(new BufferedInputStream(stream)));
 	}
 
-	public AudioControl(File file) throws LineUnavailableException,
-		UnsupportedAudioFileException, IOException {
+	public AudioControl(File file) throws LineUnavailableException, UnsupportedAudioFileException, IOException {
 		clip.open(AudioSystem.getAudioInputStream(file));
 	}
 
@@ -27,9 +26,13 @@ public class AudioControl {
 		clip.start();
 	}
 
-	public void play(int position) {
-		clip.setFramePosition(position);
+	public void play(long microseconds) {
+		clip.setMicrosecondPosition(microseconds);
 		play();
+	}
+
+	public long getPost() {
+		return clip.getMicrosecondPosition();
 	}
 
 	public void loop() {
