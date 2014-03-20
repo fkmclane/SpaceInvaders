@@ -1,2 +1,2 @@
-resources/*.class
-*.jar
+build
+dist
