@@ -7,12 +7,9 @@ public class Shot extends Actor {
 		setDirection(direction);
 
 		try {
-			AudioControl shot = new AudioControl(SpaceInvaders.class.getResourceAsStream("sounds/shot.au"));
-			shot.play();
+			new GameSound(SpaceInvaders.class.getResourceAsStream("sounds/shot.au"));
 		}
-		catch(Exception e) {
-			System.err.println("Error playing shot sound: " + e);
-		}
+		catch(Exception e) {} //Ignore
 	}
 
 	public void act() {

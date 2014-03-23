@@ -33,14 +33,11 @@ public class SpaceInvaders {
 		world.add(new Location(18, 17), new Wall(4));
 		world.add(new Location(18, 18), new Wall(4));
 
-		try {
-			AudioControl background = new AudioControl(SpaceInvaders.class.getResourceAsStream("sounds/background.au"));
-			background.loop();
-		}
-		catch(Exception e) {
-			System.err.println("Error playing background audio: " + e);
-		}
-
 		world.show();
+
+		try {
+			new GameSound(SpaceInvaders.class.getResourceAsStream("sounds/background.au"), true);
+		}
+		catch (Exception e) {} //Ignore
 	}
 } 

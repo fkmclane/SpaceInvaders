@@ -29,12 +29,10 @@ public class Boss extends Actor {
 	}
 	public void removeSelfFromGrid() {
 		try {
-			AudioControl death = new AudioControl(SpaceInvaders.class.getResourceAsStream("sounds/bossdeath.au"));
-			death.play();
+			new GameSound(SpaceInvaders.class.getResourceAsStream("sounds/bossdeath.au"));
 		}
-		catch(Exception e) {
-			System.err.println("Error playing boss death sound: " + e);
-		}
+		catch (Exception e) {} //Ignore
+
 		super.removeSelfFromGrid();
 	}
 } 
