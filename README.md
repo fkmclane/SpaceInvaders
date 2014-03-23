@@ -4,4 +4,4 @@ A Space Invaders implementation in GridWorld. Use A and D to move left and right
 
 Building
 --------
-Run `make dist` from the root of the project and run the generated JAR file. Note, this project requires JDK 7 for sound.
+To build a jar using ant, run `ant dist` from the command line. If ant is unavailable, this project can be imported into Eclipse and built from there.
