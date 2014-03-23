@@ -15,6 +15,8 @@ public class Enemy extends Actor {
 		this.direction = direction;
 		this.steps = steps * 2;
 		slowness = 5 - speed;
+		if(slowness < 0)
+			slowness = 0;
 	}
 
 	public void act() {
