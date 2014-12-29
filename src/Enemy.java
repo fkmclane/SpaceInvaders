@@ -55,7 +55,7 @@ public class Enemy extends Invader {
 		try {
 			super.move(direction);
 		}
-		catch(IllegalArgumentException e) {
+		catch (IllegalArgumentException e) {
 			removeSelfFromGrid();
 		}
 	}

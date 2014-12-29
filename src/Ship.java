@@ -36,7 +36,7 @@ public class Ship extends Invader {
 		try {
 			super.move(direction);
 		}
-		catch(IllegalArgumentException e) {
+		catch (IllegalArgumentException e) {
 			//Ignore
 		}
 	}
@@ -48,7 +48,7 @@ public class Ship extends Invader {
 
 		for (Location location : grid.getOccupiedLocations()) {
 			Invader invader = grid.get(location);
-			if(invader instanceof ShipShot)
+			if (invader instanceof ShipShot)
 				return;
 		}
 

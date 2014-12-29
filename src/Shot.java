@@ -10,7 +10,7 @@ public class Shot extends Invader {
 		try {
 			new GameSound(SpaceInvaders.class.getResourceAsStream("sounds/shot.au"));
 		}
-		catch(Exception e) {} //Ignore
+		catch (Exception e) {} //Ignore
 	}
 
 	public void act() {

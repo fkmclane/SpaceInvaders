@@ -91,7 +91,7 @@ public class Invader {
 			shot.removeSelfFromGrid();
 		}
 
-		if(grid != null)
+		if (grid != null)
 			moveTo(move);
 	}
 
