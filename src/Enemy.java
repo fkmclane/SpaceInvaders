@@ -14,7 +14,7 @@ public class Enemy extends Invader {
 		this.direction = direction;
 		this.totalsteps = steps * 2;
 		slowness = 5 - speed;
-		if(slowness < 0)
+		if (slowness < 0)
 			slowness = 0;
 	}
 

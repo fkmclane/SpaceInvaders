@@ -16,12 +16,16 @@ public class SpaceInvaders {
 		InvaderWorld world = new InvaderWorld(grid);
 
 		world.add(new Location(0, 1), new Boss(Location.EAST, 18));
-		for (int i = 2; i <= 8; i += 2) {
-			for (int j = 1; j <= 13; j += 2) {
-				world.add(new Location(i, j),
-						new Enemy(Location.EAST, 8, 3));
-			}
-		}
+		for (int j = 1; j <= 13; j += 2)
+			world.add(new Location(2, j), new SmallEnemy(Location.EAST, 8, 3));
+		for (int j = 1; j <= 13; j += 2)
+			world.add(new Location(4, j), new MediumEnemy(Location.EAST, 8, 3));
+		for (int j = 1; j <= 13; j += 2)
+			world.add(new Location(6, j), new MediumEnemy(Location.EAST, 8, 3));
+		for (int j = 1; j <= 13; j += 2)
+			world.add(new Location(8, j), new LargeEnemy(Location.EAST, 8, 3));
+		for (int j = 1; j <= 13; j += 2)
+			world.add(new Location(10, j), new LargeEnemy(Location.EAST, 8, 3));
 		world.add(new Location(20, 3), new Ship(5));
 		world.add(new Location(18, 2), new Wall(4));
 		world.add(new Location(18, 3), new Wall(4));
