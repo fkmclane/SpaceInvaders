@@ -25,6 +25,13 @@ public class Boss extends Invader {
 		}
 	}
 
+	public void move(int direction) {
+		try {
+			super.move(direction);
+		}
+		catch (IllegalArgumentException e) {} //Ignore
+	}
+
 	public void removeSelfFromGrid() {
 		try {
 			new GameSound(SpaceInvaders.class.getResourceAsStream("sounds/bossdeath.au"));

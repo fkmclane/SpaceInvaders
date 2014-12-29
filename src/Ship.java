@@ -36,9 +36,7 @@ public class Ship extends Invader {
 		try {
 			super.move(direction);
 		}
-		catch (IllegalArgumentException e) {
-			//Ignore
-		}
+		catch (IllegalArgumentException e) {} //Ignore
 	}
 
 	private void fire() {

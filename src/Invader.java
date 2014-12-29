@@ -85,10 +85,16 @@ public class Invader {
 		if (!grid.isValid(move))
 			throw new IllegalArgumentException("Location " + location + " is not valid.");
 
-		Invader shot = grid.get(move);
-		if (shot instanceof Shot) {
-			shoot();
-			shot.removeSelfFromGrid();
+		Invader other = grid.get(move);
+		if (other != null) {
+			if (other instanceof Shot)
+				shoot();
+			else if (other instanceof Enemy)
+				removeSelfFromGrid();
+			else if (other instanceof Boss)
+				removeSelfFromGrid();
+
+			other.removeSelfFromGrid();
 		}
 
 		if (grid != null)
