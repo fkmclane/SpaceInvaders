@@ -23,7 +23,7 @@ public class Enemy extends Invader {
 		if (grid == null)
 			return;
 
-		animation = ~animation;
+		animation ^= 1;
 
 		if (counter == slowness) {
 			if (Math.random() > SHOT_CHANCE)

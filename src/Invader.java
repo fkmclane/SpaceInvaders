@@ -89,10 +89,10 @@ public class Invader {
 		if (shot instanceof Shot) {
 			shoot();
 			shot.removeSelfFromGrid();
-			return;
 		}
 
-		moveTo(move);
+		if(grid != null)
+			moveTo(move);
 	}
 
 	public String toString() {
