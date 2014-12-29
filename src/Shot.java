@@ -33,6 +33,26 @@ public class Shot extends Invader {
 			moveTo(move);
 		}
 	}
+
+	public void move(int direction) {
+		Grid<Invader> grid = getGrid();
+		if (grid == null)
+			return;
+
+		Location move = getLocation().getAdjacentLocation(direction);
+
+		if (!grid.isValid(move)) {
+			removeSelfFromGrid();
+			return;
+		}
+
+		Invader invader = grid.get(move);
+		if (invader != null) {
+			invader.shoot();
+			removeSelfFromGrid();
+			return;
+		}
+
+		moveTo(move);
+	}
 }
-
-

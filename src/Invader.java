@@ -76,6 +76,25 @@ public class Invader {
 		removeSelfFromGrid();
 	}
 
+	public void move(int direction) {
+		if (grid == null)
+			throw new IllegalStateException("This invader is not contained in a grid.");
+
+		Location move = getLocation().getAdjacentLocation(direction);
+
+		if (!grid.isValid(move))
+			throw new IllegalArgumentException("Location " + location + " is not valid.");
+
+		Invader shot = grid.get(move);
+		if (shot instanceof Shot) {
+			shoot();
+			shot.removeSelfFromGrid();
+			return;
+		}
+
+		moveTo(move);
+	}
+
 	public String toString() {
 		return getClass().getName() + "[location=" + location + "]";
 	}

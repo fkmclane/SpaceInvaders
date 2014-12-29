@@ -32,23 +32,13 @@ public class Ship extends Invader {
 		catch (Exception e) {} //Ignore
 	}
 
-	private void move(int direction) {
-		Grid<Invader> grid = getGrid();
-		if (grid == null)
-			return;
-
-		Location move = getLocation().getAdjacentLocation(direction);
-
-		if (!grid.isValid(move))
-			return;
-
-		Invader shot = grid.get(move);
-		if (shot instanceof Shot) {
-			reduceLives();
-			shot.removeSelfFromGrid();
+	public void move(int direction) {
+		try {
+			super.move(direction);
 		}
-
-		moveTo(move);
+		catch(IllegalArgumentException e) {
+			//Ignore
+		}
 	}
 
 	private void fire() {

@@ -4,11 +4,11 @@ import info.gridworld.grid.Location;
 public class Boss extends Invader {
 	private int direction;
 	private int step = 0;
-	private int steps;
+	private int totalsteps;
 
 	public Boss(int direction, int steps) {
 		this.direction = direction;
-		this.steps = steps;
+		this.totalsteps = steps;
 	}
 
 	public void act() {
@@ -16,13 +16,10 @@ public class Boss extends Invader {
 		if (grid == null)
 			return;
 
-		Location move = getLocation().getAdjacentLocation(direction);
-		if (!grid.isValid(move) || grid.get(move) != null)
-			return;
+		move(direction);
 
-		moveTo(move);
 		step++;
-		if (step == steps) {
+		if (step == totalsteps) {
 			direction += Location.HALF_CIRCLE;
 			step = 0;
 		}

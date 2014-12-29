@@ -4,7 +4,7 @@ import info.gridworld.grid.Location;
 public class Enemy extends Invader {
 	private int direction;
 	private int step = 0;
-	private int steps;
+	private int totalsteps;
 	private int counter = 0;
 	private int slowness;
 	private int animation = 0;
@@ -12,7 +12,7 @@ public class Enemy extends Invader {
 
 	public Enemy(int direction, int steps, int speed) {
 		this.direction = direction;
-		this.steps = steps * 2;
+		this.totalsteps = steps * 2;
 		slowness = 5 - speed;
 		if(slowness < 0)
 			slowness = 0;
@@ -26,39 +26,38 @@ public class Enemy extends Invader {
 		animation = ~animation;
 
 		if (counter == slowness) {
-			Location checkLocation = getLocation().getAdjacentLocation(Location.SOUTH).getAdjacentLocation(Location.SOUTH);
-
 			if (Math.random() > SHOT_CHANCE)
 				fire();
 
-			Location move = getLocation().getAdjacentLocation(direction);
-
 			step++;
-			if (step == steps / 2) {
-				direction += Location.HALF_CIRCLE;
-			}
-			else if (step > steps) {
+
+			Location move;
+			if (step > totalsteps) {
+				move(Location.SOUTH);
+
 				step = 0;
 				direction += Location.HALF_CIRCLE;
-				move = new Location(getLocation().getRow() + 1, getLocation().getCol());
+			}
+			else {
+				move(direction);
+
+				if (step == totalsteps / 2)
+					direction += Location.HALF_CIRCLE;
 			}
 
-			if (!grid.isValid(move)) {
-				removeSelfFromGrid();
-				return;
-			}
-
-			Invader shot = grid.get(move);
-			if (shot instanceof Shot) {
-				removeSelfFromGrid();
-				shot.removeSelfFromGrid();
-			}
-
-			moveTo(move);
 			counter = 0;
 		}
 
 		counter++;
+	}
+
+	public void move(int direction) {
+		try {
+			super.move(direction);
+		}
+		catch(IllegalArgumentException e) {
+			removeSelfFromGrid();
+		}
 	}
 
 	private void fire() {
