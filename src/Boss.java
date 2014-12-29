@@ -35,4 +35,4 @@ public class Boss extends Actor {
 
 		super.removeSelfFromGrid();
 	}
-} 
+}

@@ -82,4 +82,4 @@ public class Enemy extends Actor {
 
 		super.removeSelfFromGrid();
 	}
-} 
+}

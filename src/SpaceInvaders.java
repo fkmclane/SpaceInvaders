@@ -39,4 +39,4 @@ public class SpaceInvaders {
 		}
 		catch (Exception e) {} //Ignore
 	}
-} 
+}
