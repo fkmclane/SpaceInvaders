@@ -1,12 +1,12 @@
 <project name="SpaceInvaders" default="dist" basedir=".">
 	<description>An implementation of Space Invaders in Gridworld.</description>
 
-	<target name="init">
+	<target name="build">
 		<mkdir dir="build" />
-		<mkdir dir="build/classes" />
 	</target>
 
-	<target name="compile" depends="init" description="Compile the classes">
+	<target name="compile" depends="build" description="Compile the classes">
+		<mkdir dir="build/classes" />
 		<javac includeantruntime="false" target="1.7" source="1.7" srcdir="src" destdir="build/classes">
 			<classpath location="lib/gridworld.jar" />
 		</javac>

@@ -1,10 +1,11 @@
-import info.gridworld.actor.Actor;
 import info.gridworld.grid.Grid;
 import info.gridworld.grid.Location;
 
-public class Shot extends Actor {
+public class Shot extends Invader {
+	private int direction;
+
 	public Shot(int direction) {
-		setDirection(direction);
+		this.direction = direction;
 
 		try {
 			new GameSound(SpaceInvaders.class.getResourceAsStream("sounds/shot.au"));
@@ -13,29 +14,19 @@ public class Shot extends Actor {
 	}
 
 	public void act() {
-		Grid<Actor> grid = getGrid();
+		Grid<Invader> grid = getGrid();
 		if (grid == null)
 			return;
 
-		Location move = getLocation().getAdjacentLocation(getDirection());
+		Location move = getLocation().getAdjacentLocation(direction);
 		if (!grid.isValid(move)) {
 			removeSelfFromGrid();
 			return;
 		}
 
-		Actor actor = grid.get(move);
-		if (actor instanceof Wall) {
-			Wall w = (Wall) actor;
-			w.reduceStrength();
-			removeSelfFromGrid();
-		}
-		else if (actor instanceof Ship) {
-			Ship s = (Ship) actor;
-			s.reduceLives();
-			removeSelfFromGrid();
-		}
-		else if (actor != null) {
-			actor.removeSelfFromGrid();
+		Invader invader = grid.get(move);
+		if (invader != null) {
+			invader.shoot();
 			removeSelfFromGrid();
 		}
 		else {

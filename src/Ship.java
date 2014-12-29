@@ -1,8 +1,7 @@
-import info.gridworld.actor.Actor;
 import info.gridworld.grid.Grid;
 import info.gridworld.grid.Location;
 
-public class Ship extends Actor {
+public class Ship extends Invader {
 	private int lives;
 
 	public Ship(int lives) {
@@ -18,6 +17,10 @@ public class Ship extends Actor {
 			fire();
 	}
 
+	public void shoot() {
+		reduceLives();
+	}
+
 	public void reduceLives() {
 		lives--;
 		if (lives <= 0)
@@ -30,30 +33,46 @@ public class Ship extends Actor {
 	}
 
 	private void move(int direction) {
-		Grid<Actor> grid = getGrid();
-		if(grid == null)
+		Grid<Invader> grid = getGrid();
+		if (grid == null)
 			return;
 
-		Location location = getLocation().getAdjacentLocation(direction);
+		Location move = getLocation().getAdjacentLocation(direction);
 
-		if(!grid.isValid(location))
+		if (!grid.isValid(move))
 			return;
 
-		if(grid.get(location) instanceof Shot) {
+		Invader shot = grid.get(move);
+		if (shot instanceof Shot) {
 			reduceLives();
-			grid.get(location).removeSelfFromGrid();
-
-			return;
+			shot.removeSelfFromGrid();
 		}
 
-		moveTo(location);
+		moveTo(move);
 	}
 
 	private void fire() {
-		Location location = getLocation().getAdjacentLocation(Location.NORTH);
-		if (getGrid().isValid(location) && getGrid().get(location) == null) {
-			Shot shot = new Shot(Location.NORTH);
-			shot.putSelfInGrid(getGrid(), location);
+		Grid<Invader> grid = getGrid();
+		if (grid == null)
+			return;
+
+		for (Location location : grid.getOccupiedLocations()) {
+			Invader invader = grid.get(location);
+			if(invader instanceof ShipShot)
+				return;
 		}
+
+		Location location = getLocation().getAdjacentLocation(Location.NORTH);
+		if (!grid.isValid(location))
+			return;
+
+		Invader invader = grid.get(location);
+		if (invader != null) {
+			invader.shoot();
+			return;
+		}
+
+		ShipShot shot = new ShipShot();
+		shot.putSelfInGrid(grid, location);
 	}
 }

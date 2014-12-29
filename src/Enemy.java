@@ -1,8 +1,7 @@
-import info.gridworld.actor.Actor;
 import info.gridworld.grid.Grid;
 import info.gridworld.grid.Location;
 
-public class Enemy extends Actor {
+public class Enemy extends Invader {
 	private int direction;
 	private int step = 0;
 	private int steps;
@@ -20,16 +19,16 @@ public class Enemy extends Actor {
 	}
 
 	public void act() {
-		Grid<Actor> grid = getGrid();
+		Grid<Invader> grid = getGrid();
 		if (grid == null)
 			return;
 
-		animation = (animation + 1) % 2;
+		animation = ~animation;
 
 		if (counter == slowness) {
 			Location checkLocation = getLocation().getAdjacentLocation(Location.SOUTH).getAdjacentLocation(Location.SOUTH);
 
-			if (Math.random() > SHOT_CHANCE && grid.isValid(checkLocation) && !(grid.get(checkLocation) instanceof Enemy))
+			if (Math.random() > SHOT_CHANCE)
 				fire();
 
 			Location move = getLocation().getAdjacentLocation(direction);
@@ -49,10 +48,10 @@ public class Enemy extends Actor {
 				return;
 			}
 
-			if (grid.get(move) instanceof Shot) {
+			Invader shot = grid.get(move);
+			if (shot instanceof Shot) {
 				removeSelfFromGrid();
-				grid.get(move).removeSelfFromGrid();
-				return;
+				shot.removeSelfFromGrid();
 			}
 
 			moveTo(move);
@@ -63,11 +62,24 @@ public class Enemy extends Actor {
 	}
 
 	private void fire() {
+		Grid<Invader> grid = getGrid();
+		if (grid == null)
+			return;
+
 		Location location = getLocation().getAdjacentLocation(Location.SOUTH);
-		if (getGrid().isValid(location) && getGrid().get(location) == null) {
-			Shot shot = new Shot(Location.SOUTH);
-			shot.putSelfInGrid(getGrid(), location);
+		if (!grid.isValid(location) || grid.get(location) != null)
+			return;
+
+		Location enemy = location.getAdjacentLocation(Location.SOUTH);
+		while (grid.isValid(enemy)) {
+			if (grid.get(enemy) instanceof Enemy)
+				return;
+
+			enemy = enemy.getAdjacentLocation(Location.SOUTH);
 		}
+
+		EnemyShot shot = new EnemyShot();
+		shot.putSelfInGrid(grid, location);
 	}
 
 	public String getImageSuffix() {

@@ -6,15 +6,15 @@
  * @version 0.1
  */
 
-import info.gridworld.actor.Actor;
 import info.gridworld.grid.Grid;
 import info.gridworld.grid.BoundedGrid;
 import info.gridworld.grid.Location;
 
 public class SpaceInvaders {
 	public static void main(String args[]) {
-		Grid<Actor> g = new BoundedGrid<Actor>(21, 21);
-		InvaderWorld world = new InvaderWorld(g);
+		Grid<Invader> grid = new BoundedGrid<Invader>(21, 21);
+		InvaderWorld world = new InvaderWorld(grid);
+
 		world.add(new Location(0, 1), new Boss(Location.EAST, 18));
 		for (int i = 2; i <= 8; i += 2) {
 			for (int j = 1; j <= 13; j += 2) {
@@ -33,10 +33,5 @@ public class SpaceInvaders {
 		world.add(new Location(18, 18), new Wall(4));
 
 		world.show();
-
-		try {
-			new GameSound(SpaceInvaders.class.getResourceAsStream("sounds/background.au"), true);
-		}
-		catch (Exception e) {} //Ignore
 	}
 }

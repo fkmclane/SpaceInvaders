@@ -1,11 +1,12 @@
-import info.gridworld.actor.Rock;
-
-public class Wall extends Rock {
+public class Wall extends Invader {
 	private int strength;
 
 	public Wall(int strength) {
-		super(null);
 		this.strength = strength;
+	}
+
+	public void shoot() {
+		reduceStrength();
 	}
 
 	public void reduceStrength() {

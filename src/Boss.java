@@ -1,8 +1,7 @@
-import info.gridworld.actor.Actor;
 import info.gridworld.grid.Grid;
 import info.gridworld.grid.Location;
 
-public class Boss extends Actor {
+public class Boss extends Invader {
 	private int direction;
 	private int step = 0;
 	private int steps;
@@ -13,13 +12,14 @@ public class Boss extends Actor {
 	}
 
 	public void act() {
-		Grid<Actor> grid = getGrid();
+		Grid<Invader> grid = getGrid();
 		if (grid == null)
 			return;
+
 		Location move = getLocation().getAdjacentLocation(direction);
-		if (!(grid.isValid(move) && grid.get(move) == null)) {
+		if (!grid.isValid(move) || grid.get(move) != null)
 			return;
-		}
+
 		moveTo(move);
 		step++;
 		if (step == steps) {
@@ -27,6 +27,7 @@ public class Boss extends Actor {
 			step = 0;
 		}
 	}
+
 	public void removeSelfFromGrid() {
 		try {
 			new GameSound(SpaceInvaders.class.getResourceAsStream("sounds/bossdeath.au"));
