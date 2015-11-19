@@ -1,30 +1,29 @@
-<project name="SpaceInvaders" default="dist" basedir=".">
+<project name="SpaceInvaders" default="jar">
 	<description>An implementation of Space Invaders in Gridworld.</description>
 
-	<target name="build">
-		<mkdir dir="build" />
-	</target>
-
-	<target name="compile" depends="build" description="Compile the classes">
-		<mkdir dir="build/classes" />
-		<javac includeantruntime="false" target="1.7" source="1.7" srcdir="src" destdir="build/classes">
-			<classpath location="lib/gridworld.jar" />
+	<target name="compile">
+		<mkdir dir="build"/>
+		<javac includeantruntime="false" srcdir="src" destdir="build">
+			<classpath location="lib/gridworld.jar"/>
 		</javac>
 	</target>
 
-	<target name="dist" depends="compile" description="Generate a JAR file">
-		<mkdir dir="dist" />
-		<manifest file="build/MANIFEST.MF">
-			<attribute name="Main-Class" value="SpaceInvaders" />
-		</manifest>
-		<jar jarfile="dist/SpaceInvaders.jar" manifest="build/MANIFEST.MF" basedir="build/classes">
-			<zipgroupfileset dir="lib" includes="*.jar" />
-			<zipfileset dir="res" includes="**/*" />
+	<target name="jar" depends="compile">
+		<mkdir dir="jar"/>
+		<jar jarfile="jar/SpaceInvaders.jar" basedir="build">
+			<zipfileset src="lib/gridworld.jar"/>
+			<zipfileset dir="res" includes="**/*"/>
+			<manifest>
+				<attribute name="Main-Class" value="SpaceInvaders"/>
+			</manifest>
 		</jar>
 	</target>
 
-	<target name="clean" description="Clean up compiled files">
-		<delete dir="build" />
-		<delete dir="dist" />
+	<target name="run" depends="jar">
+		<java jar="jar/SpaceInvaders.jar" fork="true"/>
+	</target>
+
+	<target name="clean">
+		<delete dir="build"/>
 	</target>
 </project>
