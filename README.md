@@ -6,4 +6,4 @@ A Space Invaders implementation in GridWorld. Use A and D to move left and right
 
 Building
 --------
-To build a jar using ant, run `ant dist` from the command line. If ant is unavailable, this project can be imported into Eclipse and built from there.
+To build a jar using ant, run `ant jar` from the command line. If ant is unavailable, this project can be imported into Eclipse and built from there.
